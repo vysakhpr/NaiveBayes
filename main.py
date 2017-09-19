@@ -16,7 +16,10 @@ months=["january","february", "march","april","may","june","july","august","sept
 start=time.time()
 
 f=open("/scratch/ds222-2017/assignment-1/DBPedia.full/full_train.txt",'r')
+# f=open("/scratch/ds222-2017/assignment-1/DBPedia.verysmall/verysmall_train.txt",'r')
 for line in f:
+	if "\t" not in line:
+		continue
 	parts=line.split("\t")
 	labels=parts[0].replace(" ","").split(',')
 	document=parts[1].split('"',1)[1].rsplit('"',1)[0].replace("\\u","").translate(None,string.punctuation).translate(None,string.digits)
@@ -55,7 +58,10 @@ print "Time Taken for Training: ",(end - start)
 start=time.time()
 
 f=open("/scratch/ds222-2017/assignment-1/DBPedia.full/full_train.txt",'r')
+# f=open("/scratch/ds222-2017/assignment-1/DBPedia.verysmall/verysmall_train.txt",'r')
 for line in f:
+	if "\t" not in line:
+		continue
 	label_probability_dict={}
 	parts=line.split("\t")
 	labels=parts[0].replace(" ","").split(',')
@@ -85,7 +91,10 @@ truth=[]
 
 start=time.time()
 f=open("/scratch/ds222-2017/assignment-1/DBPedia.full/full_test.txt",'r')
+# f=open("/scratch/ds222-2017/assignment-1/DBPedia.verysmall/verysmall_test.txt",'r')
 for line in f:
+	if "\t" not in line:
+		continue
 	label_probability_dict={}
 	parts=line.split("\t")
 	labels=parts[0].replace(" ","").split(',')
@@ -115,7 +124,10 @@ truth=[]
 
 start=time.time()
 f=open("/scratch/ds222-2017/assignment-1/DBPedia.full/full_devel.txt",'r')
+# f=open("/scratch/ds222-2017/assignment-1/DBPedia.verysmall/verysmall_devel.txt",'r')
 for line in f:
+	if "\t" not in line:
+		continue
 	label_probability_dict={}
 	parts=line.split("\t")
 	labels=parts[0].replace(" ","").split(',')
